@@ -8,6 +8,8 @@
     <dimen name="default_textSize_large">18sp</dimen>
     <dimen name="default_textSize_veryLarge">24sp</dimen>
 
-    <dimen name="episode_details_episodeTitle_padding">4dp</dimen>
+    <dimen name="episode_details_episodeTitle_padding">16dp</dimen>
     <dimen name="episode_details_card_padding">8dp</dimen>
+    <dimen name="episode_details_view_height">1dp</dimen>
+
 </resources>

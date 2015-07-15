@@ -3,9 +3,12 @@
 
     <string name="episode_details_title">Series Tracker</string>
 
+    <string name="episode_details_summary">SUMMARY</string>
+    <string name="episode_details_time">05/05/2005 at 10:00</string>
+
     <string name="episode_details_text">
-        Arya arrives in Braavos. Jamie takes on a secret mission. Ellaria Sand seeks revenge for Oberyn's death. Stannis makes Jon a generous offer as the Night's Watch elects a new Lord Commander. Daenerys is faced with a difficult decision.
-        Arya arrives in Braavos. Jamie takes on a secret mission. Ellaria Sand seeks revenge for Oberyn's death. Stannis makes Jon a generous offer as the Night's Watch elects a new Lord Commander. Daenerys is faced with a difficult decision.
+        Arya arrives in Braavos. Jamie takes on a secret mission. Ellaria Sand seeks revenge for Oberyns death. Stannis makes Jon a generous offer as the Nights Watch elects a new Lord Commander. Daenerys is faced with a difficult decision.
+        Arya arrives in Braavos. Jamie takes on a secret mission. Ellaria Sand seeks revenge for Oberyns death. Stannis makes Jon a generous offer as the Nights Watch elects a new Lord Commander. Daenerys is faced with a difficult decision.
     </string>
 
 </resources>
