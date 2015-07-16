@@ -4,8 +4,14 @@ import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+import java.util.Date;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.async_task.*;
+import com.movile.up.seriestracker.loader.EpisodeLoaderCallback;
+import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.util.FormatUtil;
 
 
 public class EpisodeDetailsActivity extends ActionBarActivity {
@@ -21,6 +27,27 @@ public class EpisodeDetailsActivity extends ActionBarActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        String url;
+        url = this.getString(R.string.api_url_base);
+        url += "/shows/breaking-bad/seasons/1/episodes/1?extended=full,images";
+
+        getLoaderManager().initLoader(0, null, new EpisodeLoaderCallback(this, new OnEpisodeListener() {
+
+            @Override
+            public void onLoadEpisodeSuccess(Episode episode) {
+                ((TextView)findViewById(R.id.episode_details_title)).setText(episode.title());
+                try {
+                    Date formattedDate = FormatUtil.formatDate(episode.firstAired());
+                    ((TextView)findViewById(R.id.episode_details_dateTime)).setText(FormatUtil.formatDate(formattedDate));
+                } catch (Exception e) {}
+
+                ((TextView)findViewById(R.id.episode_details_summary)).setText(episode.overview());
+            }
+        }, url)
+        ).forceLoad();
+
+
         Log.d(TAG, "onStart()");
     }
 
