@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker;
+package com.movile.up.seriestracker.control;
 
 import android.content.Context;
 import android.util.Log;

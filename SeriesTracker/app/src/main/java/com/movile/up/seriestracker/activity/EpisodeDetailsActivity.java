@@ -1,17 +1,16 @@
-package com.movile.up.seriestracker;
+package com.movile.up.seriestracker.activity;
 
 import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import com.movile.up.seriestracker.R;
 
 
 public class EpisodeDetailsActivity extends ActionBarActivity {
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
-    private static final String episodeTitle= "asd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +27,15 @@ public class EpisodeDetailsActivity extends ActionBarActivity {
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
-        outState.putString(episodeTitle, "title episode");
+        outState.putString("episodeTitle", "title episode");
+        Log.d(TAG, "onSaveInstanceState()");
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        savedInstanceState.get(episodeTitle);
-        Log.d(TAG,episodeTitle);
+        savedInstanceState.get("episodeTitle");
+        Log.d(TAG,savedInstanceState.getString("episodeTitle"));
     }
 
     @Override

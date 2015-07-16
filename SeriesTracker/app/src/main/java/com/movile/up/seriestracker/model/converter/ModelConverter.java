@@ -1,4 +1,4 @@
-package model.converter;
+package com.movile.up.seriestracker.model.converter;
 
 import com.google.gson.Gson;
 import com.movile.up.seriestracker.model.Episode;

@@ -34,8 +34,7 @@
 
             <android.support.v7.widget.CardView
                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    card_view:cardCornerRadius="@dimen/default_spacing_small"
-                    card_view:contentPadding="@dimen/episode_details_card_padding"
+                    style="@style/AppTheme.EpisodeDetails.Card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_spacing_small"
@@ -46,26 +45,21 @@
                     <ImageView
                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/episode_details_clock_img"
                         android:layout_alignParentLeft="true"
-                        android:src="@drawable/episode_details_clock"
-                        android:scaleType="centerCrop"/>
+                        android:id="@+id/episode_details_clock_img"
+                        style="@style/AppTheme.EpisodeDetails.Clock" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/episode_details_dateTime"
-                        android:gravity="center"
                         android:layout_toRightOf="@id/episode_details_clock_img"
-                        android:padding="@dimen/default_spacing_small"
-                        android:text="@string/episode_details_time"
-                        android:textColor="@color/default_background_fourth"/>
+                        android:id="@+id/episode_details_dateTime"
+                        style="@style/AppTheme.EpisodeDetails.Date"/>
                </LinearLayout>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                card_view:cardCornerRadius="@dimen/default_spacing_small"
-                card_view:contentPadding="@dimen/default_spacing_medium"
+                style="@style/AppTheme.EpisodeDetails.Card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_spacing_medium">
@@ -86,10 +80,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="left"
-                        android:textColor="@color/default_textColor_fourth"
-                        android:padding="@dimen/default_spacing_medium"
-                        android:text="@string/episode_details_text" />
+                        android:id="@+id/episode_details_summary"
+                        style="@style/AppTheme.EpisodeDetails.SummaryText" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 

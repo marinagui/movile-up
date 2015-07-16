@@ -14,8 +14,8 @@
         <item name="android:text">@string/episode_details_title</item>
         <item name="android:textColor">@color/default_textColor_first</item>
         <item name="android:textSize">@dimen/default_textSize_veryLarge</item>
-        <item name="android:padding">@dimen/episode_details_episodeTitle_padding</item>
-        <item name="android:paddingBottom">@dimen/episode_details_card_padding</item>
+        <item name="android:padding">@dimen/default_spacing_large</item>
+        <item name="android:paddingBottom">@dimen/default_spacing_medium</item>
     </style>
 
     <style name="AppTheme.EpisodeDetails.Screenshot">
@@ -27,4 +27,29 @@
         <item name="android:src">@drawable/overlay</item>
         <item name="android:scaleType">fitXY</item>
     </style>
+
+    <style name="AppTheme.EpisodeDetails.Clock">
+        <item name="android:src">@drawable/episode_details_clock</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="AppTheme.EpisodeDetails.Date">
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/default_spacing_small</item>
+        <item name="android:textColor">@color/default_background_fourth</item>
+        <item name="android:text">@string/episode_details_time</item>
+    </style>
+
+    <style name="AppTheme.EpisodeDetails.Card">
+        <item name="card_view:cardCornerRadius">@dimen/default_spacing_small</item>
+        <item name="card_view:contentPadding">@dimen/default_spacing_medium</item>
+    </style>
+
+    <style name="AppTheme.EpisodeDetails.SummaryText">
+        <item name="android:gravity">left</item>
+        <item name="android:padding">@dimen/default_spacing_medium</item>
+        <item name="android:textColor">@color/default_textColor_fourth</item>
+        <item name="android:text">@string/episode_details_text</item>
+    </style>
+
 </resources>
