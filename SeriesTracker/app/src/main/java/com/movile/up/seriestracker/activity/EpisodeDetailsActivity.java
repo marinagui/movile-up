@@ -2,7 +2,6 @@ package com.movile.up.seriestracker.activity;
 
 import android.graphics.Bitmap;
 import android.os.PersistableBundle;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,12 +11,12 @@ import java.util.Date;
 
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.interfaces.EpisodeRemoteService;
+import com.movile.up.seriestracker.remote.EpisodeRemoteService;
 import com.movile.up.seriestracker.listener.OnEpisodeListener;
-import com.movile.up.seriestracker.loader.EpisodeLoaderCallback;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.util.FormatUtil;
+import com.movile.up.seriestracker.view.EpisodeDetailsView;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -25,7 +24,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class EpisodeDetailsActivity extends AppCompatActivity {
+public class EpisodeDetailsActivity extends AppCompatActivity implements EpisodeDetailsView{
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
 
@@ -33,6 +32,26 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
+    }
+
+    @Override
+    public void displayEpisode(Episode episode) {
+        try {
+            ((TextView) findViewById(R.id.episode_details_title)).setText(episode.season()+"x"+episode.number()+" - "+episode.title());
+            ((TextView) findViewById(R.id.episode_details_summary)).setText(episode.overview());
+
+            Date formattedDate = FormatUtil.formatDate(episode.firstAired());
+            ((TextView) findViewById(R.id.episode_details_dateTime)).setText(FormatUtil.formatDate(formattedDate));
+
+            Glide
+                    .with(EpisodeDetailsActivity.this)
+                    .load(episode.images().screenshot().get(Images.ImageSize.FULL))
+                    .placeholder(R.drawable.highlight_placeholder)
+                    .centerCrop()
+                    .into((ImageView) findViewById(R.id.episode_details_screenshot));
+        } catch(Exception e) {
+            Log.e(TAG, "Error setting values", e.getCause());
+        }
     }
 
     @Override
@@ -45,7 +64,7 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
             public void onLoadEpisodeSuccess(Episode episode) {
 
                 try {
-                    ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
+                    ((TextView) findViewById(R.id.episode_details_title)).setText(episode.season()+"x"+episode.number()+" - "+episode.title());
                     ((TextView) findViewById(R.id.episode_details_summary)).setText(episode.overview());
 
                     Date formattedDate = FormatUtil.formatDate(episode.firstAired());
@@ -57,7 +76,9 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
                             .placeholder(R.drawable.highlight_placeholder)
                             .centerCrop()
                             .into((ImageView) findViewById(R.id.episode_details_screenshot));
-                } catch(Exception e) {}
+                } catch(Exception e) {
+                    Log.e(TAG, "Error setting values", e.getCause());
+                }
             }
 
             @Override
@@ -67,7 +88,7 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
         };
 
         EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);
-        service.getEpisodeDetails("breaking-bad", (long)1, (long)1, new Callback<Episode>() {
+        service.getEpisodeDetails("breaking-bad", (long)5, (long)16, new Callback<Episode>() {
             @Override
             public void success(Episode episode, Response response) {
                 mCallback.onLoadEpisodeSuccess(episode);
