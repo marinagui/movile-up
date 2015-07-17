@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.movile.up.seriestracker.control.FetchLocalEpisodeDetails;
+import com.movile.up.seriestracker.listener.OnEpisodeListener;
 import com.movile.up.seriestracker.model.Episode;
 
 public class EpisodeAsyncTask extends AsyncTask<Void, Void, Episode> {

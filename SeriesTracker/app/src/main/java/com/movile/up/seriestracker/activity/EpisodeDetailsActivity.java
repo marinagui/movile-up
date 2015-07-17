@@ -1,20 +1,31 @@
 package com.movile.up.seriestracker.activity;
 
+import android.graphics.Bitmap;
 import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.Date;
 
+import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.async_task.*;
+import com.movile.up.seriestracker.interfaces.EpisodeRemoteService;
+import com.movile.up.seriestracker.listener.OnEpisodeListener;
 import com.movile.up.seriestracker.loader.EpisodeLoaderCallback;
 import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.util.FormatUtil;
 
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
-public class EpisodeDetailsActivity extends ActionBarActivity {
+
+public class EpisodeDetailsActivity extends AppCompatActivity {
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
 
@@ -28,24 +39,45 @@ public class EpisodeDetailsActivity extends ActionBarActivity {
     protected void onStart() {
         super.onStart();
 
-        String url;
-        url = this.getString(R.string.api_url_base);
-        url += "/shows/breaking-bad/seasons/1/episodes/1?extended=full,images";
-
-        getLoaderManager().initLoader(0, null, new EpisodeLoaderCallback(this, new OnEpisodeListener() {
-
+        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(this.getString(R.string.api_url_base)).build();
+        final OnEpisodeListener mCallback = new OnEpisodeListener() {
             @Override
             public void onLoadEpisodeSuccess(Episode episode) {
-                ((TextView)findViewById(R.id.episode_details_title)).setText(episode.title());
-                try {
-                    Date formattedDate = FormatUtil.formatDate(episode.firstAired());
-                    ((TextView)findViewById(R.id.episode_details_dateTime)).setText(FormatUtil.formatDate(formattedDate));
-                } catch (Exception e) {}
 
-                ((TextView)findViewById(R.id.episode_details_summary)).setText(episode.overview());
+                try {
+                    ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
+                    ((TextView) findViewById(R.id.episode_details_summary)).setText(episode.overview());
+
+                    Date formattedDate = FormatUtil.formatDate(episode.firstAired());
+                    ((TextView) findViewById(R.id.episode_details_dateTime)).setText(FormatUtil.formatDate(formattedDate));
+
+                    Glide
+                            .with(EpisodeDetailsActivity.this)
+                            .load(episode.images().screenshot().get(Images.ImageSize.FULL))
+                            .placeholder(R.drawable.highlight_placeholder)
+                            .centerCrop()
+                            .into((ImageView) findViewById(R.id.episode_details_screenshot));
+                } catch(Exception e) {}
             }
-        }, url)
-        ).forceLoad();
+
+            @Override
+            public void onLoadImageSuccess(Bitmap image) {
+
+            }
+        };
+
+        EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);
+        service.getEpisodeDetails("breaking-bad", (long)1, (long)1, new Callback<Episode>() {
+            @Override
+            public void success(Episode episode, Response response) {
+                mCallback.onLoadEpisodeSuccess(episode);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e(TAG, "Error fetching episode", error.getCause());
+            }
+        });
 
 
         Log.d(TAG, "onStart()");

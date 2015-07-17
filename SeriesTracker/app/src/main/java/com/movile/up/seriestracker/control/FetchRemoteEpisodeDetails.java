@@ -35,8 +35,13 @@ public class FetchRemoteEpisodeDetails {
         } catch (IOException e) {
             Log.e(TAG, "Error loading remote content", e);
         } finally {
-            if(reader != null)
-                reader.close();
+            try {
+                if(reader != null)
+                    reader.close();
+            } catch (Exception e) {
+
+            }
+
         }
 
         return episode;
