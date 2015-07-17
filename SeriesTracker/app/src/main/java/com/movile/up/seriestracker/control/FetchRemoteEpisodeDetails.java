@@ -18,13 +18,8 @@ import com.movile.up.seriestracker.model.converter.ModelConverter;
 public class FetchRemoteEpisodeDetails {
 
     private static final String TAG = FetchLocalEpisodeDetails.class.getSimpleName();
-    private String url = "";
 
-    public FetchRemoteEpisodeDetails (String url) {
-        this.url = url;
-    }
-
-    public Episode get(Context context) {
+    public Episode get(Context context, String url) {
         Episode episode = null;
         InputStreamReader reader = null;
 
@@ -40,7 +35,8 @@ public class FetchRemoteEpisodeDetails {
         } catch (IOException e) {
             Log.e(TAG, "Error loading remote content", e);
         } finally {
-            // Release InputStreamReader if used
+            if(reader != null)
+                reader.close();
         }
 
         return episode;

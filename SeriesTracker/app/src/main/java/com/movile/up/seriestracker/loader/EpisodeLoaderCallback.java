@@ -23,7 +23,7 @@ public class EpisodeLoaderCallback implements LoaderManager.LoaderCallbacks<Epis
     }
 
     public Loader<Episode> onCreateLoader(int id, Bundle bundle) {
-        
+        return new EpisodeLoader(mContext, mUrl);
     }
 
     public void onLoadFinished(Loader<Episode> loader, Episode episode) {
