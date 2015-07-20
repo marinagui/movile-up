@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_spacing_medium"
+        android:layout_marginTop="@dimen/default_spacing_medium"
+        android:layout_marginBottom="@dimen/default_spacing_medium"
+        android:id="@+id/season_details_number"
+        style="@style/AppTheme.SeasonDetails.ItemNumber"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/season_details_title"
+        android:layout_toRightOf="@id/season_details_number"
+        android:layout_alignTop="@+id/season_details_number"
+        style="@style/AppTheme.SeasonDetails.ItemTitle"/>
+
+</LinearLayout>

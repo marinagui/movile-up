@@ -1,6 +1,5 @@
 package com.movile.up.seriestracker.activity;
 
-import android.graphics.Bitmap;
 import android.os.PersistableBundle;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,18 +11,10 @@ import java.util.Date;
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.presenter.EpisodeDetailsPresenter;
-import com.movile.up.seriestracker.remote.EpisodeRemoteService;
-import com.movile.up.seriestracker.listener.OnEpisodeListener;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.util.FormatUtil;
 import com.movile.up.seriestracker.view.EpisodeDetailsView;
-
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-
 
 public class EpisodeDetailsActivity extends AppCompatActivity implements EpisodeDetailsView{
 
