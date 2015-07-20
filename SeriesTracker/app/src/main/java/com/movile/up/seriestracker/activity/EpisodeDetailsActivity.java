@@ -11,6 +11,7 @@ import java.util.Date;
 
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.presenter.EpisodeDetailsPresenter;
 import com.movile.up.seriestracker.remote.EpisodeRemoteService;
 import com.movile.up.seriestracker.listener.OnEpisodeListener;
 import com.movile.up.seriestracker.model.Episode;
@@ -27,11 +28,14 @@ import retrofit.client.Response;
 public class EpisodeDetailsActivity extends AppCompatActivity implements EpisodeDetailsView{
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
+    private EpisodeDetailsPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
+
+        mPresenter = new EpisodeDetailsPresenter(this,this);
     }
 
     @Override
@@ -58,48 +62,7 @@ public class EpisodeDetailsActivity extends AppCompatActivity implements Episode
     protected void onStart() {
         super.onStart();
 
-        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(this.getString(R.string.api_url_base)).build();
-        final OnEpisodeListener mCallback = new OnEpisodeListener() {
-            @Override
-            public void onLoadEpisodeSuccess(Episode episode) {
-
-                try {
-                    ((TextView) findViewById(R.id.episode_details_title)).setText(episode.season()+"x"+episode.number()+" - "+episode.title());
-                    ((TextView) findViewById(R.id.episode_details_summary)).setText(episode.overview());
-
-                    Date formattedDate = FormatUtil.formatDate(episode.firstAired());
-                    ((TextView) findViewById(R.id.episode_details_dateTime)).setText(FormatUtil.formatDate(formattedDate));
-
-                    Glide
-                            .with(EpisodeDetailsActivity.this)
-                            .load(episode.images().screenshot().get(Images.ImageSize.FULL))
-                            .placeholder(R.drawable.highlight_placeholder)
-                            .centerCrop()
-                            .into((ImageView) findViewById(R.id.episode_details_screenshot));
-                } catch(Exception e) {
-                    Log.e(TAG, "Error setting values", e.getCause());
-                }
-            }
-
-            @Override
-            public void onLoadImageSuccess(Bitmap image) {
-
-            }
-        };
-
-        EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);
-        service.getEpisodeDetails("breaking-bad", (long)5, (long)16, new Callback<Episode>() {
-            @Override
-            public void success(Episode episode, Response response) {
-                mCallback.onLoadEpisodeSuccess(episode);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Log.e(TAG, "Error fetching episode", error.getCause());
-            }
-        });
-
+        mPresenter.loadEpisodeDetails("sherlock",(long)1,(long)1);
 
         Log.d(TAG, "onStart()");
     }
