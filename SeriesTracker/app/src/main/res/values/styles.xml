@@ -5,13 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AppTheme.EpisodeDetails">
-        <!-- Customize your theme here. -->
-    </style>
-
-    <style name="AppTheme.SeasonDetails">
-        <!-- Customize your theme here. -->
-    </style>
+    <!-- ....................Episode Details.................... -->
+    <style name="AppTheme.EpisodeDetails"/>
 
     <style name="AppTheme.EpisodeDetails.Title">
         <item name="android:ellipsize">end</item>
@@ -57,19 +52,77 @@
         <item name="android:text">@string/episode_details_text</item>
     </style>
 
-    <style name="AppTheme.SeasonDetails.ItemNumber">
+    <!-- ....................Season Details.................... -->
+
+    <style name="AppTheme.SeasonDetails"/>
+
+    <style name="AppTheme.SeasonDetails.episodesList">
+        <item name="android:background">@color/default_background_second</item>
+        <item name="android:divider">@color/default_background_first</item>
+        <item name="android:dividerHeight">@dimen/season_details_divider_height</item>
+    </style>
+
+    <style name="AppTheme.SeasonDetails.Episode"/>
+
+    <style name="AppTheme.SeasonDetails.Episode.ItemNumber">
         <item name="android:gravity">center</item>
         <item name="android:padding">@dimen/default_spacing_medium</item>
         <item name="android:textColor">@color/default_textColor_first</item>
         <item name="android:background">@drawable/episode_item_number</item>
         <item name="android:textSize">@dimen/default_textSize_small</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
+        <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
+        <item name="android:layout_marginBottom">@dimen/default_spacing_medium</item>
     </style>
 
-    <style name="AppTheme.SeasonDetails.ItemTitle">
+    <style name="AppTheme.SeasonDetails.Episode.ItemTitle">
         <item name="android:gravity">left</item>
         <item name="android:padding">@dimen/default_spacing_medium</item>
         <item name="android:textColor">@color/default_textColor_fourth</item>
         <item name="android:textSize">@dimen/default_textSize_medium</item>
         <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
+        <item name="android:layout_toRightOf">@id/season_details_number</item>
+        <item name="android:layout_alignTop">@+id/season_details_number</item>
     </style>
+
+    <style name="AppTheme.SeasonDetails.Header" />
+
+    <style name="AppTheme.SeasonDetails.Header.Overlay" parent="AppTheme.EpisodeDetails.Overlay"/>
+
+    <style name="AppTheme.SeasonDetails.Header.Screenshot" parent="AppTheme.EpisodeDetails.Screenshot"/>
+
+    <style name="AppTheme.SeasonDetails.Header.Year">
+        <item name="android:textColor">@color/default_textColor_first</item>
+        <item name="android:layout_marginTop">151dp</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
+        <item name="android:textSize">@dimen/default_textSize_veryLarge</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">9999</item>
+    </style>
+
+    <style name="AppTheme.SeasonDetails.Header.Thumbnail">
+        <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
+    </style>
+
+    <style name="AppTheme.SeasonDetails.Header.Title">
+        <item name="android:text">@string/season_details_title</item>
+        <item name="android:textColor">@color/default_textColor_third</item>
+        <item name="android:textSize">@dimen/default_textSize_verySmall</item>
+        <item name="android:layout_marginTop">@dimen/default_spacing_large</item>
+        <item name="android:layout_marginBottom">@dimen/default_spacing_large</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
+    </style>
+
+    <style name="AppTheme.SeasonDetails.Header.Rating">
+        <item name="android:gravity">center</item>
+        <item name="android:text">0.0</item>
+        <item name="android:textColor">@color/default_textColor_first</item>
+        <item name="android:textSize">@dimen/default_textSize_large</item>
+        <item name="android:background">@drawable/rating</item>
+        <item name="android:layout_marginRight">@dimen/default_spacing_large</item>
+        <item name="android:layout_marginTop">@dimen/season_details_rating_marginTop</item>
+    </style>
+
+
 </resources>

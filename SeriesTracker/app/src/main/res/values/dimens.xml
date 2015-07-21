@@ -18,4 +18,10 @@
 
     <dimen name="season_details_divider_height">1dp</dimen>
 
+    <dimen name="season_details_thumbnail_height">128dp</dimen>
+    <dimen name="season_details_thumbnail_width">88dp</dimen>
+
+    <dimen name="season_details_rating_size">48dp</dimen>
+    <dimen name="season_details_rating_marginTop">264dp</dimen>
+
 </resources>
