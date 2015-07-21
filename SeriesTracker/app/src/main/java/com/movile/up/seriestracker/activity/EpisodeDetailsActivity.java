@@ -2,7 +2,6 @@ package com.movile.up.seriestracker.activity;
 
 import android.os.PersistableBundle;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,18 +14,35 @@ import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.util.FormatUtil;
 import com.movile.up.seriestracker.view.EpisodeDetailsView;
+import com.movile.up.seriestracker.base.BaseNavigationToolbarActivity;
 
-public class EpisodeDetailsActivity extends AppCompatActivity implements EpisodeDetailsView{
+
+public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implements EpisodeDetailsView{
+
+    public static final String EXTRA_SHOW = "show";
+    public static final String EXTRA_SEASON = "season";
+    public static final String EXTRA_EPISODE = "episode";
+
+    private String mShow;
+    private long mSeason, mEpisode;
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private EpisodeDetailsPresenter mPresenter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
 
+        getIntentExtra();
+
+        showLoading();
+
         mPresenter = new EpisodeDetailsPresenter(this,this);
+
+
     }
 
     @Override
@@ -44,16 +60,26 @@ public class EpisodeDetailsActivity extends AppCompatActivity implements Episode
                     .placeholder(R.drawable.highlight_placeholder)
                     .centerCrop()
                     .into((ImageView) findViewById(R.id.episode_details_screenshot));
+
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle("S"+episode.season()+"E"+episode.number());
+            }
         } catch(Exception e) {
             Log.e(TAG, "Error setting values", e.getCause());
         }
+    }
+
+    private void getIntentExtra () {
+        mShow = getIntent().getExtras().getString("EXTRA_SHOW");
+        mSeason = getIntent().getExtras().getLong("EXTRA_SEASON");
+        mEpisode = getIntent().getExtras().getLong("EXTRA_EPISODE");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        mPresenter.loadEpisodeDetails("sherlock",(long)1,(long)1);
+        mPresenter.loadEpisodeDetails(mShow,mSeason,mEpisode);
 
         Log.d(TAG, "onStart()");
     }

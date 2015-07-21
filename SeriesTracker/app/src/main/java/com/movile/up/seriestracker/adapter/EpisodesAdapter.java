@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.listener.SeasonDetailsListener;
 import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.listener.SeasonDetailsClickEpisode;
 
 import java.util.List;
 
@@ -20,12 +20,12 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
 
     private List<Episode> episodes;
     private Context mContext;
-    //private SeasonDetailsListener mListener;
+    private SeasonDetailsClickEpisode mListener;
 
-    public EpisodesAdapter(Context context) { //, SeasonDetailsListener clickListener
+    public EpisodesAdapter(Context context, SeasonDetailsClickEpisode clickListener) { //
         super(context,R.layout.season_details_episode);
         mContext  = context;
-        //mListener = clickListener;
+        mListener = clickListener;
     }
 
     public int getCount() {
@@ -69,9 +69,15 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
         notifyDataSetChanged();
     }
 
-    private void populateViewFromHolder(ViewHolder holder, int position, int type) {
+    private void populateViewFromHolder(ViewHolder holder, final int position, int type) {
         ((TextView)holder.numberView()).setText(episodes.get(position).number().toString());
         ((TextView)holder.titleView()).setText(episodes.get(position).title());
+        holder.mRoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onEpisodeClick(episodes.get(position));
+            }
+        });
     }
 
     public int getViewTypeCount() {
@@ -84,9 +90,11 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
     public static class ViewHolder {
         private View numberView;
         private View titleView;
+        public View mRoot;
         public ViewHolder(View root) {
             numberView = root.findViewById(R.id.season_details_number);
             titleView = root.findViewById(R.id.season_details_title);
+            mRoot = root;
         }
         public View numberView() {
             return numberView;
