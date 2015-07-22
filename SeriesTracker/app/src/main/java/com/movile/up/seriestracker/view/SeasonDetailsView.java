@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by android on 7/20/15.
  */
-public interface SeasonDetailsView extends SeasonDetailsClickEpisode {
+public interface SeasonDetailsView {
     void displayEpisodes(List<Episode> episodes);
     void displaySeason(Season season);
 }

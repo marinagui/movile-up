@@ -9,13 +9,16 @@
     <dimen name="default_textSize_large">18sp</dimen>
     <dimen name="default_textSize_veryLarge">24sp</dimen>
 
+    <!-- Episode details -->
     <dimen name="episode_details_episodeTitle_padding">16dp</dimen>
     <dimen name="episode_details_card_padding">8dp</dimen>
     <dimen name="episode_details_view_height">1dp</dimen>
+
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- Season details -->
     <dimen name="season_details_divider_height">1dp</dimen>
 
     <dimen name="season_details_thumbnail_height">128dp</dimen>
@@ -30,5 +33,9 @@
 
     <!-- Base Loading -->
     <dimen name="base_loading_progress_size">48dp</dimen>
+
+    <!-- Show details -->
+    <dimen name="show_details_season_thumbnail_height">176dp</dimen>
+    <dimen name="show_details_season_thumbnail_width">88dp</dimen>
 
 </resources>

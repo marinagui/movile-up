@@ -14,7 +14,7 @@ import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.util.FormatUtil;
 import com.movile.up.seriestracker.view.EpisodeDetailsView;
-import com.movile.up.seriestracker.base.BaseNavigationToolbarActivity;
+import com.movile.up.seriestracker.activity.base.BaseNavigationToolbarActivity;
 
 
 public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implements EpisodeDetailsView{
@@ -38,13 +38,13 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
         getIntentExtra();
 
         configureToolbar();
-        showLoading();
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("S"+mSeason+"E"+mEpisode);
         }
 
         mPresenter = new EpisodeDetailsPresenter(this,this);
+        showLoading();
         mPresenter.loadEpisodeDetails(mShow,mSeason,mEpisode);
     }
 

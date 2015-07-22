@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.base;
+package com.movile.up.seriestracker.activity.base;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;

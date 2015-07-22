@@ -1,8 +1,9 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
     </style>
 
     <!-- ....................Episode Details.................... -->
@@ -154,5 +155,34 @@
         <item name="android:indeterminate">true</item>
     </style>
 
+    <!-- Show details - season item -->
+    <style name="AppTheme.SeasonItem"/>
+
+    <style name="AppTheme.SeasonItem.Container">
+        <item name="android:background">@color/card_season_background</item>
+    </style>
+
+    <style name="AppTheme.SeasonItem.Thumbnail">
+        <item name="android:src">@drawable/highlight_placeholder</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="AppTheme.SeasonItem.Title">
+        <item name="android:text">"Season 1"</item>
+        <item name="android:textColor">@color/default_textColor_third</item>
+        <item name="android:textSize">@dimen/default_textSize_small</item>
+        <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_medium</item>
+       <item name="android:paddingLeft">@dimen/default_spacing_medium</item>
+    </style>
+
+    <style name="AppTheme.SeasonItem.Episodes">
+        <item name="android:text">"10 episodes"</item>
+        <item name="android:textColor">@color/show_season_episodes_textColor</item>
+        <item name="android:textSize">@dimen/default_textSize_verySmall</item>
+        <item name="android:layout_marginTop">@dimen/default_spacing_small</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_medium</item>
+        <item name="android:paddingLeft">@dimen/default_spacing_medium</item>
+    </style>
 
 </resources>

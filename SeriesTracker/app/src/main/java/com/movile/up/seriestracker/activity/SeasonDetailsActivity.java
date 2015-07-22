@@ -2,8 +2,6 @@ package com.movile.up.seriestracker.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +13,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.adapter.EpisodesAdapter;
-import com.movile.up.seriestracker.base.BaseNavigationToolbarActivity;
+import com.movile.up.seriestracker.activity.base.BaseNavigationToolbarActivity;
+import com.movile.up.seriestracker.listener.SeasonDetailsClickEpisode;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.model.Season;
@@ -26,7 +25,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 
-public class SeasonDetailsActivity extends BaseNavigationToolbarActivity implements SeasonDetailsView {
+public class SeasonDetailsActivity extends BaseNavigationToolbarActivity implements SeasonDetailsView,SeasonDetailsClickEpisode {
     private EpisodesAdapter mAdapter;
     private View headerView;
     private String mShow;

@@ -6,18 +6,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.fragments.SerieInfoFragment;
-import com.movile.up.seriestracker.fragments.SerieSeasonsFragment;
+import com.movile.up.seriestracker.fragments.ShowInfoFragment;
+import com.movile.up.seriestracker.fragments.ShowSeasonsFragment;
 
 /**
  * Created by android on 7/21/15.
  */
-public class SeriesAdapter extends FragmentPagerAdapter {
+public class ShowsAdapter extends FragmentPagerAdapter {
 
     private static int NUM_ITEMS = 2;
     private Context mContext;
 
-    public SeriesAdapter(FragmentManager fragmentManager, Context context) {
+    public ShowsAdapter(FragmentManager fragmentManager, Context context) {
         super(fragmentManager);
         mContext = context;
     }
@@ -25,9 +25,9 @@ public class SeriesAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new SerieInfoFragment();
+                return new ShowInfoFragment();
             case 1:
-                return new SerieSeasonsFragment();
+                return new ShowSeasonsFragment();
             default:
                 return null;
         }

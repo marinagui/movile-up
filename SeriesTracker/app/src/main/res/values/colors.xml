@@ -30,4 +30,7 @@
     <!-- Base Loading -->
     <color name="base_loading_container_background">#99333333</color>
 
+    <color name="card_season_background">#F0F0F0</color>
+    <color name="show_season_episodes_textColor">#A2A2A2</color>
+
 </resources>
