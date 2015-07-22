@@ -22,13 +22,12 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
     public static final String EXTRA_SHOW = "show";
     public static final String EXTRA_SEASON = "season";
     public static final String EXTRA_EPISODE = "episode";
+    private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
 
     private String mShow;
     private long mSeason, mEpisode;
 
-    private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private EpisodeDetailsPresenter mPresenter;
-
 
 
     @Override
@@ -38,11 +37,15 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
 
         getIntentExtra();
 
+        configureToolbar();
         showLoading();
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("S"+mSeason+"E"+mEpisode);
+        }
+
         mPresenter = new EpisodeDetailsPresenter(this,this);
-
-
+        mPresenter.loadEpisodeDetails(mShow,mSeason,mEpisode);
     }
 
     @Override
@@ -61,9 +64,7 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
                     .centerCrop()
                     .into((ImageView) findViewById(R.id.episode_details_screenshot));
 
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setTitle("S"+episode.season()+"E"+episode.number());
-            }
+            hideLoading();
         } catch(Exception e) {
             Log.e(TAG, "Error setting values", e.getCause());
         }
@@ -78,9 +79,6 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
     @Override
     protected void onStart() {
         super.onStart();
-
-        mPresenter.loadEpisodeDetails(mShow,mSeason,mEpisode);
-
         Log.d(TAG, "onStart()");
     }
 

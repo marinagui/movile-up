@@ -16,7 +16,7 @@ public class SerieInfoFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
         View view;
-        view = inflater.inflate(R.layout.serie_info_fragment, container, false);
+        view = inflater.inflate(R.layout.show_info_fragment, container, false);
         return view;
     }
 }

@@ -8,23 +8,26 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.adapter.EpisodesAdapter;
 import com.movile.up.seriestracker.base.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.model.Season;
 import com.movile.up.seriestracker.presenter.SeasonDetailsPresenter;
 import com.movile.up.seriestracker.view.SeasonDetailsView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 
 public class SeasonDetailsActivity extends BaseNavigationToolbarActivity implements SeasonDetailsView {
     private EpisodesAdapter mAdapter;
-    private SeasonDetailsPresenter mPresenter;
     private View headerView;
     private String mShow;
     private long mSeason;
@@ -32,22 +35,21 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
     @Override
     public void displayEpisodes(List<Episode> episodes) {
 
-        ListView view = (ListView) findViewById(R.id.episodes_list_view);
-
-        /*headerView = LayoutInflater.from(this)
-                .inflate(R.layout.season_details_header, view, false);
-
-        view.addHeaderView(headerView, null, false);*/
-
-        mAdapter = new EpisodesAdapter(this,this);
         mAdapter.updateEpisodesList(episodes);
-        view.setAdapter(mAdapter);
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Season "+episodes.get(0).season());
-        }
 
         hideLoading();
+    }
+
+    private void configureEpisodesList () {
+        ListView episodesList = (ListView) findViewById(R.id.episodes_list_view);
+        headerView = LayoutInflater.from(this)
+                .inflate(R.layout.season_details_header, episodesList, false);
+
+        mAdapter = new EpisodesAdapter(this,this);
+
+
+        episodesList.addHeaderView(headerView, null, false);
+        episodesList.setAdapter(mAdapter);
     }
 
     @Override
@@ -61,21 +63,42 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
 
     @Override
     public void displaySeason(Season season) {
-        //((TextView)headerView.findViewById(R.id.season_details_rating)).setText(season.rating().toString());
+        ((TextView)headerView.findViewById(R.id.season_details_rating)).setText(new DecimalFormat("#.#").format(season.rating()));
+
+        Glide
+                .with(SeasonDetailsActivity.this)
+                .load(season.images().poster().get(Images.ImageSize.FULL))
+                .placeholder(R.drawable.highlight_placeholder)
+                .centerCrop()
+                .into((ImageView) findViewById(R.id.season_details_screenshot));
+
+        Glide
+                .with(SeasonDetailsActivity.this)
+                .load(season.images().thumb().get(Images.ImageSize.FULL))
+                .placeholder(R.drawable.highlight_placeholder)
+                .centerCrop()
+                .into((ImageView) findViewById(R.id.season_details_thumbnail));
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.season_details_activity);
-        showLoading();
+
+        configureEpisodesList();
+        configureToolbar();
 
         mShow = "breaking-bad";
-        mSeason = 5;
+        mSeason = (long)5;
 
-        mPresenter = new SeasonDetailsPresenter(this,this);
-        mPresenter.loadSeasonDetails(mShow,mSeason);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Season "+(mSeason));
+        }
 
+        SeasonDetailsPresenter mPresenter = new SeasonDetailsPresenter(this, this);
+
+        showLoading();
+        mPresenter.loadSeasonDetails(mShow, mSeason);
     }
 
     @Override

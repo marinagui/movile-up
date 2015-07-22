@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/season_header"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/season_header"
     android:background="@color/default_background_first">
     <ImageView
+        android:id="@+id/season_details_screenshot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/season_details_screenshot"
         style="@style/AppTheme.SeasonDetails.Header.Screenshot" />
     <ImageView
+        android:id="@+id/season_details_overlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/season_details_overlay"
         style="@style/AppTheme.SeasonDetails.Header.Overlay" />
     <TextView
         android:id="@+id/season_details_year"
@@ -32,6 +32,7 @@
         style="@style/AppTheme.SeasonDetails.Header.Thumbnail"/>
 
     <TextView
+        android:id="@+id/season_details_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/season_details_thumbnail"

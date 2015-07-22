@@ -19,12 +19,10 @@ import java.util.List;
 public class EpisodesAdapter extends ArrayAdapter<Episode> {
 
     private List<Episode> episodes;
-    private Context mContext;
     private SeasonDetailsClickEpisode mListener;
 
     public EpisodesAdapter(Context context, SeasonDetailsClickEpisode clickListener) { //
         super(context,R.layout.season_details_episode);
-        mContext  = context;
         mListener = clickListener;
     }
 
@@ -41,7 +39,7 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
     }
 
     public long getItemId(int position) {
-        return position;
+        return episodes.get(position).number();
     }
 
     public View getView(int position, View view, ViewGroup parent) {
@@ -64,18 +62,18 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
         return view;
     }
 
-    public void updateEpisodesList(List<Episode> e) {
-        episodes = e;
+    public void updateEpisodesList(List<Episode> episodes) {
+        this.episodes = episodes;
         notifyDataSetChanged();
     }
 
     private void populateViewFromHolder(ViewHolder holder, final int position, int type) {
         ((TextView)holder.numberView()).setText(episodes.get(position).number().toString());
         ((TextView)holder.titleView()).setText(episodes.get(position).title());
-        holder.mRoot.setOnClickListener(new View.OnClickListener() {
+        holder.root().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onEpisodeClick(episodes.get(position));
+                mListener.onEpisodeClick(getItem(position));
             }
         });
     }
@@ -88,19 +86,21 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
     }
 
     public static class ViewHolder {
-        private View numberView;
-        private View titleView;
-        public View mRoot;
+        private TextView numberView, titleView;
+        private View viewRoot;
         public ViewHolder(View root) {
-            numberView = root.findViewById(R.id.season_details_number);
-            titleView = root.findViewById(R.id.season_details_title);
-            mRoot = root;
+            numberView = (TextView)root.findViewById(R.id.season_details_number);
+            titleView = (TextView)root.findViewById(R.id.season_details_title);
+            viewRoot = root;
         }
         public View numberView() {
             return numberView;
         }
         public View titleView() {
             return titleView;
+        }
+        public View root() {
+            return viewRoot;
         }
     }
 }

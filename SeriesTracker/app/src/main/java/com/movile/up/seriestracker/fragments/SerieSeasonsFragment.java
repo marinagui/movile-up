@@ -16,7 +16,7 @@ public class SerieSeasonsFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view;
-        view = inflater.inflate(R.layout.serie_seasons_fragment, container, false);
+        view = inflater.inflate(R.layout.show_seasons_fragment, container, false);
         return view;
     }
 }

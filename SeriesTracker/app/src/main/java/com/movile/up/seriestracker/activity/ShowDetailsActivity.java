@@ -10,13 +10,13 @@ import com.movile.up.seriestracker.adapter.SeriesAdapter;
 /**
  * Created by android on 7/21/15.
  */
-public class SerieDetailsActivity extends FragmentActivity{
+public class ShowDetailsActivity extends FragmentActivity{
     private SeriesAdapter adapterViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.series_details_activity);
+        setContentView(R.layout.show_details_activity);
         ViewPager vpSeries = (ViewPager) findViewById(R.id.series_view_pager);
         adapterViewPager = new SeriesAdapter(getSupportFragmentManager(), this);
         vpSeries.setAdapter(adapterViewPager);
