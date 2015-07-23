@@ -26,6 +26,10 @@ import java.util.List;
 
 
 public class SeasonDetailsActivity extends BaseNavigationToolbarActivity implements SeasonDetailsView,SeasonDetailsClickEpisode {
+
+    public static final String EXTRA_SHOW = "show";
+    public static final String EXTRA_SEASON = "season";
+
     private EpisodesAdapter mAdapter;
     private View headerView;
     private String mShow;
