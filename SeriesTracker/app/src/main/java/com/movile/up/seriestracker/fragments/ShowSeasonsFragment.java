@@ -1,6 +1,5 @@
 package com.movile.up.seriestracker.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,8 +14,8 @@ import com.movile.up.seriestracker.activity.SeasonDetailsActivity;
 import com.movile.up.seriestracker.adapter.SeasonsAdapter;
 import com.movile.up.seriestracker.listener.OnSeasonClickListener;
 import com.movile.up.seriestracker.model.Season;
+import com.movile.up.seriestracker.presenter.ShowDetailsSeasonsPresenter;
 import com.movile.up.seriestracker.view.ShowDetailsSeasonsView;
-import com.movile.up.seriestracker.view.ShowDetailsView;
 
 import java.util.List;
 
@@ -25,6 +24,7 @@ import java.util.List;
  */
 public class ShowSeasonsFragment extends android.support.v4.app.Fragment implements ShowDetailsSeasonsView, OnSeasonClickListener {
     public static final String SHOW_ARGUMENT = "show";
+    private ShowDetailsSeasonsPresenter mPresenter;
 
     @Nullable
     @Override
@@ -38,7 +38,7 @@ public class ShowSeasonsFragment extends android.support.v4.app.Fragment impleme
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ShowDetailsSeasonsPresenter mPresenter = new ShowDetailsSeasonsPresenter(this.getActivity(),this);
+        mPresenter = new ShowDetailsSeasonsPresenter(this.getActivity(),this);
 
         RecyclerView rv = (RecyclerView) getActivity().findViewById(R.id.seasons_recycler);
         rv.setLayoutManager(
@@ -46,12 +46,11 @@ public class ShowSeasonsFragment extends android.support.v4.app.Fragment impleme
         SeasonsAdapter adapter = new SeasonsAdapter(getActivity(), (OnSeasonClickListener)getActivity());
         rv.setAdapter(adapter);
 
-
     }
 
     @Override
     public void displaySeasons(List<Season> seasons) {
-
+        mPresenter.loadShowSeasons();
     }
 
     @Override

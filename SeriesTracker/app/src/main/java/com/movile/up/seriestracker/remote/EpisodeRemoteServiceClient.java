@@ -7,6 +7,7 @@ import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.listener.EpisodeDetailsCallback;
 import com.movile.up.seriestracker.listener.SeasonDetailsListener;
 import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.remote.service.EpisodeRemoteService;
 
 import java.util.List;
 

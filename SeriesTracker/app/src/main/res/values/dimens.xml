@@ -38,4 +38,10 @@
     <dimen name="show_details_season_thumbnail_height">176dp</dimen>
     <dimen name="show_details_season_thumbnail_width">88dp</dimen>
 
+    <!-- Shows grid -->
+    <dimen name="grid_spacing">@dimen/default_spacing_small</dimen>
+    <dimen name="grid_item_width">114dp</dimen>
+    <dimen name="grid_item_height">170dp</dimen>
+    <dimen name="grid_padding">@dimen/default_spacing_small</dimen>
+
 </resources>

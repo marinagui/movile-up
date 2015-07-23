@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.remote;
+package com.movile.up.seriestracker.remote.service;
 
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.util.ApiConfiguration;

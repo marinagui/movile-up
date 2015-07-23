@@ -14,6 +14,9 @@ import com.movile.up.seriestracker.view.ShowDetailsView;
  * Created by android on 7/21/15.
  */
 public class ShowDetailsActivity extends BaseNavigationToolbarActivity implements ShowDetailsView {
+
+    public static final String EXTRA_SHOW = "show";
+
     private ShowViewPagerAdapter adapterViewPager;
     ShowDetailsPresenter mPresenter;
     private String mShow;
@@ -31,7 +34,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         configureToolbar();
 
         ViewPager vpSeries = (ViewPager) findViewById(R.id.series_view_pager);
-        adapterViewPager = new ShowViewPagerAdapter(getSupportFragmentManager(), this, mShow);
+        adapterViewPager = new ShowViewPagerAdapter(getSupportFragmentManager(), this, this.EXTRA_SHOW);
         vpSeries.setAdapter(adapterViewPager);
     }
 

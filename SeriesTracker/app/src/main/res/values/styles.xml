@@ -185,4 +185,18 @@
         <item name="android:paddingLeft">@dimen/default_spacing_medium</item>
     </style>
 
+    <style name="AppTheme.Grid">
+        <item name="android:numColumns">auto_fit</item>
+        <item name="android:verticalSpacing">@dimen/grid_spacing</item>
+        <item name="android:gravity">center</item>
+        <item name="android:columnWidth">@dimen/grid_item_width</item>
+        <item name="android:stretchMode">spacingWidthUniform</item>
+        <item name="android:paddingTop">@dimen/grid_padding</item>
+        <item name="android:paddingBottom">@dimen/grid_padding</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="AppTheme.Grid.Item">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
 </resources>
