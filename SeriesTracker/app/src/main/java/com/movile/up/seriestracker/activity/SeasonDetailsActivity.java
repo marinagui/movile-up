@@ -27,8 +27,8 @@ import java.util.List;
 
 public class SeasonDetailsActivity extends BaseNavigationToolbarActivity implements SeasonDetailsView,SeasonDetailsClickEpisode {
 
-    public static final String EXTRA_SHOW = "show";
-    public static final String EXTRA_SEASON = "season";
+    public static final String EXTRA_SHOW = "season_details_extra_show";
+    public static final String EXTRA_SEASON = "season_details_extra_season";
 
     private EpisodesAdapter mAdapter;
     private View headerView;
@@ -36,10 +36,31 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
     private long mSeason;
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.season_details_activity);
+
+        configureEpisodesList();
+        configureToolbar();
+
+        getIntentExtra();
+
+        /*mShow = "breaking-bad";
+        mSeason = (long)5;*/
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Season "+(mSeason));
+        }
+
+        SeasonDetailsPresenter mPresenter = new SeasonDetailsPresenter(this, this);
+
+        showLoading();
+        mPresenter.loadSeasonDetails(mShow, mSeason);
+    }
+
+    @Override
     public void displayEpisodes(List<Episode> episodes) {
-
         mAdapter.updateEpisodesList(episodes);
-
         hideLoading();
     }
 
@@ -49,7 +70,6 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
                 .inflate(R.layout.season_details_header, episodesList, false);
 
         mAdapter = new EpisodesAdapter(this,this);
-
 
         episodesList.addHeaderView(headerView, null, false);
         episodesList.setAdapter(mAdapter);
@@ -83,46 +103,9 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
                 .into((ImageView) findViewById(R.id.season_details_thumbnail));
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.season_details_activity);
 
-        configureEpisodesList();
-        configureToolbar();
-
-        mShow = "breaking-bad";
-        mSeason = (long)5;
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Season "+(mSeason));
-        }
-
-        SeasonDetailsPresenter mPresenter = new SeasonDetailsPresenter(this, this);
-
-        showLoading();
-        mPresenter.loadSeasonDetails(mShow, mSeason);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_season_details, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    private void getIntentExtra() {
+        mShow = getIntent().getExtras().getString(EXTRA_SHOW);
+        mSeason = getIntent().getExtras().getLong(EXTRA_SEASON);
     }
 }

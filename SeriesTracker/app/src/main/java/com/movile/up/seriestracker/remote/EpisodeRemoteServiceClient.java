@@ -48,7 +48,7 @@ public class EpisodeRemoteServiceClient {
         service.getSeasonDetails(show, season, new Callback<List<Episode>>() {
             @Override
             public void success(List<Episode> episodes, Response response) {
-                mListener.onSeasonDetailsSuccess(episodes);
+                mListener.onSeasonDetailsEpisodesSuccess(episodes);
             }
 
             @Override

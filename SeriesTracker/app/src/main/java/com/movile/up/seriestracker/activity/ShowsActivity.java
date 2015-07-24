@@ -19,8 +19,6 @@ import java.util.List;
  */
 public class ShowsActivity extends AppCompatActivity implements ShowsView, ShowsClickListener {
 
-    private static final String TAG = ShowsActivity.class.getSimpleName();
-
     private ShowsPresenter mPresenter;
     private ShowsGridAdapter mAdapter;
 
@@ -49,7 +47,7 @@ public class ShowsActivity extends AppCompatActivity implements ShowsView, Shows
     @Override
     public void onShowClick(Show show) {
         Intent intent = new Intent(this, EpisodeDetailsActivity.class);
-        intent.putExtra(ShowDetailsActivity.EXTRA_SHOW, show.title());
+        intent.putExtra(ShowDetailsActivity.EXTRA_SHOW, show.ids().slug());
         startActivity(intent);
     }
 }

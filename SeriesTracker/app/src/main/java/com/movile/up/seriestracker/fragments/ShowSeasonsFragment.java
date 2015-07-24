@@ -25,13 +25,12 @@ import java.util.List;
 public class ShowSeasonsFragment extends android.support.v4.app.Fragment implements ShowDetailsSeasonsView, OnSeasonClickListener {
     public static final String SHOW_ARGUMENT = "show";
     private ShowDetailsSeasonsPresenter mPresenter;
+    private SeasonsAdapter mAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view;
-        view = inflater.inflate(R.layout.show_seasons_fragment, container, false);
-        return view;
+        return inflater.inflate(R.layout.show_seasons_fragment, container, false);
     }
 
     @Override
@@ -43,14 +42,15 @@ public class ShowSeasonsFragment extends android.support.v4.app.Fragment impleme
         RecyclerView rv = (RecyclerView) getActivity().findViewById(R.id.seasons_recycler);
         rv.setLayoutManager(
                 new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        SeasonsAdapter adapter = new SeasonsAdapter(getActivity(), (OnSeasonClickListener)getActivity());
-        rv.setAdapter(adapter);
+        mAdapter = new SeasonsAdapter(getActivity(), this);
+        rv.setAdapter(mAdapter);
 
+        mPresenter.loadShowSeasons(getArguments().getString(SHOW_ARGUMENT));
     }
 
     @Override
     public void displaySeasons(List<Season> seasons) {
-        mPresenter.loadShowSeasons();
+        mAdapter.updateSeasonsList(seasons);
     }
 
     @Override

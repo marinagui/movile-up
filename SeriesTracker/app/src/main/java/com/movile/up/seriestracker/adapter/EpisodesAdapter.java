@@ -68,14 +68,16 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
     }
 
     private void populateViewFromHolder(ViewHolder holder, final int position, int type) {
-        ((TextView)holder.numberView()).setText(episodes.get(position).number().toString());
-        ((TextView)holder.titleView()).setText(episodes.get(position).title());
-        holder.root().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.onEpisodeClick(getItem(position));
-            }
-        });
+        if (episodes.get(position) != null) {
+            ((TextView)holder.numberView()).setText(episodes.get(position).number().toString());
+            ((TextView)holder.titleView()).setText(episodes.get(position).title());
+            holder.root().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.onEpisodeClick(getItem(position));
+                }
+            });
+        }
     }
 
     public int getViewTypeCount() {

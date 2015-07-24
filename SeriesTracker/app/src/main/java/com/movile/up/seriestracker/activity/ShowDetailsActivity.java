@@ -15,7 +15,7 @@ import com.movile.up.seriestracker.view.ShowDetailsView;
  */
 public class ShowDetailsActivity extends BaseNavigationToolbarActivity implements ShowDetailsView {
 
-    public static final String EXTRA_SHOW = "show";
+    public static final String EXTRA_SHOW = "show_details_extra_show";
 
     private ShowViewPagerAdapter adapterViewPager;
     ShowDetailsPresenter mPresenter;
@@ -26,7 +26,9 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_details_activity);
 
-        mShow = "breaking-bad";
+        getIntentExtra();
+        //mShow = "breaking-bad";
+
         mPresenter = new ShowDetailsPresenter(this, this);
         showLoading();
         mPresenter.loadShowDetails(mShow);
@@ -42,5 +44,9 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     public void displayShow(Show show) {
         getSupportActionBar().setTitle(show.title());
         hideLoading();
+    }
+
+    private void getIntentExtra(){
+        mShow = getIntent().getExtras().getString(EXTRA_SHOW);
     }
 }

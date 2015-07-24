@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.movile.up.seriestracker.listener.SeasonDetailsListener;
 import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.model.Season;
 import com.movile.up.seriestracker.remote.EpisodeRemoteServiceClient;
 import com.movile.up.seriestracker.view.SeasonDetailsView;
 
@@ -23,7 +24,12 @@ public class SeasonDetailsPresenter implements SeasonDetailsListener {
     }
 
     @Override
-    public void onSeasonDetailsSuccess(List<Episode> episodes) {
+    public void onSeasonDetailsSuccess(Season season) {
+        mView.displaySeason(season);
+    }
+
+    @Override
+    public void onSeasonDetailsEpisodesSuccess(List<Episode> episodes) {
         mView.displayEpisodes(episodes);
     }
 

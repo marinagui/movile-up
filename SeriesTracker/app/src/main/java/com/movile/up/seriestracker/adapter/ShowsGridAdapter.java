@@ -43,16 +43,13 @@ public class ShowsGridAdapter extends ArrayAdapter<Show> {
     }
 
     public long getItemId(int position) {
-        return (long)position;
+        return shows.get(position).ids().trakt();
     }
+
     public View getView(int position, View view, ViewGroup parent) {
         ViewHolder holder;
-        int type = getItemViewType(position);
         if (view == null) {
             int resource = R.layout.shows_grid_item;
-            //if (type == TYPE_TBA) {
-            //    resource = R.layout.episode_item_tba;
-            //}
             view = LayoutInflater.from(parent.getContext())
                     .inflate(resource, parent, false);
             holder = new ViewHolder(view);
@@ -60,16 +57,16 @@ public class ShowsGridAdapter extends ArrayAdapter<Show> {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        populateViewFromHolder(holder, position, type);
+        populateViewFromHolder(holder, position);
 
         return view;
     }
 
-    private void populateViewFromHolder(ViewHolder holder, final int position, int type) {
+    private void populateViewFromHolder(ViewHolder holder, final int position) {
 
         Glide
                 .with(getContext())
-                .load(shows.get(position).images().poster().get(Images.ImageSize.FULL))
+                .load(shows.get(position).images().poster().get(Images.ImageSize.THUMB))
                 .placeholder(R.drawable.highlight_placeholder)
                 .centerCrop()
                 .into(holder.showsGridItem());
