@@ -46,7 +46,7 @@ public class ShowsActivity extends AppCompatActivity implements ShowsView, Shows
 
     @Override
     public void onShowClick(Show show) {
-        Intent intent = new Intent(this, EpisodeDetailsActivity.class);
+        Intent intent = new Intent(this, ShowDetailsActivity.class);
         intent.putExtra(ShowDetailsActivity.EXTRA_SHOW, show.ids().slug());
         startActivity(intent);
     }

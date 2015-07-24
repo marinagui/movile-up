@@ -24,10 +24,12 @@ public class ShowsGridAdapter extends ArrayAdapter<Show> {
 
     private List<Show> shows;
     private ShowsClickListener mListener;
+    private Context mContext;
 
     public ShowsGridAdapter(Context context, ShowsClickListener listener) {
         super(context, R.layout.shows_grid_item);
         mListener = listener;
+        mContext = context;
     }
 
     public int getCount() {
@@ -65,7 +67,7 @@ public class ShowsGridAdapter extends ArrayAdapter<Show> {
     private void populateViewFromHolder(ViewHolder holder, final int position) {
 
         Glide
-                .with(getContext())
+                .with(mContext)
                 .load(shows.get(position).images().poster().get(Images.ImageSize.THUMB))
                 .placeholder(R.drawable.highlight_placeholder)
                 .centerCrop()

@@ -36,7 +36,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         configureToolbar();
 
         ViewPager vpSeries = (ViewPager) findViewById(R.id.series_view_pager);
-        adapterViewPager = new ShowViewPagerAdapter(getSupportFragmentManager(), this, this.EXTRA_SHOW);
+        adapterViewPager = new ShowViewPagerAdapter(getSupportFragmentManager(), this, mShow);
         vpSeries.setAdapter(adapterViewPager);
     }
 

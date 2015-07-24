@@ -4,11 +4,21 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- SISTEMA -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:name=".application.SeriesTrackerApplication">
+
+        <receiver android:name=".receiver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".activity.ShowsActivity"
@@ -21,8 +31,8 @@
 
         <activity
             android:name=".activity.ShowDetailsActivity"
-            android:label="@string/app_name" >
-
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.ShowsActivity">
         </activity>
 
         <activity
@@ -47,6 +57,7 @@
                 <action android:name="com.movile.up.seriestracker.action.SHOW_UPDATE" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>

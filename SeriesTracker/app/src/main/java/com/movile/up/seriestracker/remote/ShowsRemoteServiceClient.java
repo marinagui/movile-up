@@ -36,7 +36,7 @@ public class ShowsRemoteServiceClient {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e(TAG, "Error fetching episode", error.getCause());
+                Log.e(TAG, "Error fetching show", error.getCause());
             }
         });
     }
