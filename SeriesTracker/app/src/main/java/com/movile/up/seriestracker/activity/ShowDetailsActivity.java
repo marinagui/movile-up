@@ -27,7 +27,6 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         setContentView(R.layout.show_details_activity);
 
         getIntentExtra();
-        //mShow = "breaking-bad";
 
         mPresenter = new ShowDetailsPresenter(this, this);
         showLoading();

@@ -40,7 +40,7 @@ public class EpisodeRemoteServiceClient {
     }
 
 
-    public void loadSeasonDetails(Context context, final SeasonDetailsListener mListener, String show, Long season) {
+    public void loadSeasonEpisodes(Context context, final SeasonDetailsListener mListener, String show, Long season) {
 
         RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(context.getString(R.string.api_url_base)).build();
         EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);

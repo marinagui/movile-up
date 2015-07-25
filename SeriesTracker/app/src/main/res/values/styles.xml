@@ -102,7 +102,7 @@
     </style>
 
     <style name="AppTheme.SeasonDetails.Header.Thumbnail">
-        <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
+        <item name="android:layout_marginTop">184dp</item>
         <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
     </style>
 
@@ -163,7 +163,6 @@
     </style>
 
     <style name="AppTheme.SeasonItem.Thumbnail">
-        <item name="android:src">@drawable/highlight_placeholder</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
 
@@ -173,16 +172,13 @@
         <item name="android:textSize">@dimen/default_textSize_small</item>
         <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
         <item name="android:layout_marginLeft">@dimen/default_spacing_medium</item>
-       <item name="android:paddingLeft">@dimen/default_spacing_medium</item>
     </style>
 
     <style name="AppTheme.SeasonItem.Episodes">
         <item name="android:text">"10 episodes"</item>
         <item name="android:textColor">@color/show_season_episodes_textColor</item>
         <item name="android:textSize">@dimen/default_textSize_verySmall</item>
-        <item name="android:layout_marginTop">@dimen/default_spacing_small</item>
         <item name="android:layout_marginLeft">@dimen/default_spacing_medium</item>
-        <item name="android:paddingLeft">@dimen/default_spacing_medium</item>
     </style>
 
     <style name="AppTheme.Grid">

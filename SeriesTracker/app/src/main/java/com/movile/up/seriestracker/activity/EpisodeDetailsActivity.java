@@ -19,9 +19,9 @@ import com.movile.up.seriestracker.activity.base.BaseNavigationToolbarActivity;
 
 public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implements EpisodeDetailsView{
 
-    public static final String EXTRA_SHOW = "show";
-    public static final String EXTRA_SEASON = "season";
-    public static final String EXTRA_EPISODE = "episode";
+    public static final String EXTRA_SHOW = "episode_details_show";
+    public static final String EXTRA_SEASON = "episode_details_season";
+    public static final String EXTRA_EPISODE = "episode_details_episode";
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
 
     private String mShow;

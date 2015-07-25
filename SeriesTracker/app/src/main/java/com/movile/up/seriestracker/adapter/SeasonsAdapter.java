@@ -36,13 +36,13 @@ public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.ViewHold
     }
 
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.titleView().setText("Season " + seasons.get(position).number().toString());
-        holder.titleView().setText(seasons.get(position).episodeCount().toString() + " episodes");
+        holder.titleView().setText("Season " + seasons.get(position).number());
+        holder.episodesView().setText(seasons.get(position).episodeCount() + " episodes");
 
         Glide
                 .with(mContext)
                 .load(seasons.get(position).images().poster().get(Images.ImageSize.FULL))
-                .placeholder(R.drawable.highlight_placeholder)
+                .placeholder(R.drawable.show_item_placeholder)
                 .centerCrop()
                 .into(holder.thumbnailView());
 
@@ -79,8 +79,8 @@ public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.ViewHold
 
         public ViewHolder(View root) {
             super(root);
-            episodesView = (TextView)root.findViewById(R.id.show_details_season_title);
-            titleView = (TextView)root.findViewById(R.id.show_details_season_episodes);
+            titleView = (TextView)root.findViewById(R.id.show_details_season_title);
+            episodesView = (TextView)root.findViewById(R.id.show_details_season_episodes);
             thumbnailView = (ImageView)root.findViewById(R.id.show_details_season_thumbnail);
             viewRoot = root;
         }

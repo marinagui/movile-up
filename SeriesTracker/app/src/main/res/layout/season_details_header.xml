@@ -15,20 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/AppTheme.SeasonDetails.Header.Overlay" />
-    <TextView
-        android:id="@+id/season_details_year"
-        android:layout_width="@dimen/season_details_thumbnail_width"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        style="@style/AppTheme.SeasonDetails.Header.Year" />
+
 
     <ImageView
         android:id="@+id/season_details_thumbnail"
         android:src="@drawable/season_item_placeholder"
         android:layout_width="@dimen/season_details_thumbnail_width"
         android:layout_height="@dimen/season_details_thumbnail_height"
-        android:layout_below="@id/season_details_year"
         style="@style/AppTheme.SeasonDetails.Header.Thumbnail"/>
 
     <TextView

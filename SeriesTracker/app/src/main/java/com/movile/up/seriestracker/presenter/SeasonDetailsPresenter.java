@@ -2,10 +2,12 @@ package com.movile.up.seriestracker.presenter;
 
 import android.content.Context;
 
+import com.movile.up.seriestracker.listener.SeasonDetailsCallback;
 import com.movile.up.seriestracker.listener.SeasonDetailsListener;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Season;
 import com.movile.up.seriestracker.remote.EpisodeRemoteServiceClient;
+import com.movile.up.seriestracker.remote.SeasonRemoteServiceClient;
 import com.movile.up.seriestracker.view.SeasonDetailsView;
 
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 /**
  * Created by android on 7/20/15.
  */
-public class SeasonDetailsPresenter implements SeasonDetailsListener {
+public class SeasonDetailsPresenter implements SeasonDetailsListener, SeasonDetailsCallback {
 
     private SeasonDetailsView mView;
     private Context mContext;
@@ -34,6 +36,7 @@ public class SeasonDetailsPresenter implements SeasonDetailsListener {
     }
 
     public void loadSeasonDetails(String show, Long season){
-        new EpisodeRemoteServiceClient().loadSeasonDetails(mContext, this, show, season);
+        new EpisodeRemoteServiceClient().loadSeasonEpisodes(mContext, this, show, season);
+        new SeasonRemoteServiceClient().loadSeasonDetails(mContext, this, show, season);
     }
 }

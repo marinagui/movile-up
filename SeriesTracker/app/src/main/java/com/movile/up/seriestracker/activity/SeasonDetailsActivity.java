@@ -2,6 +2,7 @@ package com.movile.up.seriestracker.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +31,8 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
     public static final String EXTRA_SHOW = "season_details_extra_show";
     public static final String EXTRA_SEASON = "season_details_extra_season";
 
+    private static final String TAG = SeasonDetailsActivity.class.getSimpleName();
+
     private EpisodesAdapter mAdapter;
     private View headerView;
     private String mShow;
@@ -45,11 +48,8 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
 
         getIntentExtra();
 
-        /*mShow = "breaking-bad";
-        mSeason = (long)5;*/
-
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Season "+(mSeason));
+            getSupportActionBar().setTitle("Season "+mSeason);
         }
 
         SeasonDetailsPresenter mPresenter = new SeasonDetailsPresenter(this, this);
@@ -97,8 +97,8 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
 
         Glide
                 .with(SeasonDetailsActivity.this)
-                .load(season.images().thumb().get(Images.ImageSize.FULL))
-                .placeholder(R.drawable.highlight_placeholder)
+                .load(season.images().thumb().get(Images.ImageSize.THUMB))
+                .placeholder(R.drawable.season_item_placeholder)
                 .centerCrop()
                 .into((ImageView) findViewById(R.id.season_details_thumbnail));
     }
