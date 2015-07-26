@@ -96,11 +96,11 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
                 .into((ImageView) findViewById(R.id.season_details_screenshot));
 
         Glide
-                .with(SeasonDetailsActivity.this)
-                .load(season.images().thumb().get(Images.ImageSize.THUMB))
+                .with(this)
+                .load(season.images().poster().get(Images.ImageSize.THUMB))
                 .placeholder(R.drawable.season_item_placeholder)
                 .centerCrop()
-                .into((ImageView) findViewById(R.id.season_details_thumbnail));
+                .into(((ImageView) findViewById(R.id.season_details_thumbnail)));
     }
 
 

@@ -51,7 +51,7 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
     @Override
     public void displayEpisode(Episode episode) {
         try {
-            ((TextView) findViewById(R.id.episode_details_title)).setText(episode.season()+"x"+episode.number()+" - "+episode.title());
+            ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
             ((TextView) findViewById(R.id.episode_details_summary)).setText(episode.overview());
 
             Date formattedDate = FormatUtil.formatDate(episode.firstAired());
@@ -71,9 +71,9 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
     }
 
     private void getIntentExtra () {
-        mShow = getIntent().getExtras().getString("EXTRA_SHOW");
-        mSeason = getIntent().getExtras().getLong("EXTRA_SEASON");
-        mEpisode = getIntent().getExtras().getLong("EXTRA_EPISODE");
+        mShow = getIntent().getExtras().getString(EXTRA_SHOW);
+        mSeason = getIntent().getExtras().getLong(EXTRA_SEASON);
+        mEpisode = getIntent().getExtras().getLong(EXTRA_EPISODE);
     }
 
     @Override

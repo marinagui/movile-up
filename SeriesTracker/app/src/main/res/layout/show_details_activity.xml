@@ -3,16 +3,53 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_height="248dp"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/show_details_screenshot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/AppTheme.SeasonDetails.Header.Screenshot" />
+        <ImageView
+            android:id="@+id/show_details_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/AppTheme.SeasonDetails.Header.Overlay" />
+
+        <TextView
+            android:id="@+id/show_details_year"
+            android:layout_width="@dimen/show_details_width_year"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/show_details_rating"
+            android:layout_marginBottom="@dimen/show_details_margin_bottom_year"
+            android:layout_marginLeft="@dimen/default_spacing_large"
+            style="@style/AppTheme.ShowDetails.Header.Year"
+            android:text="2015"
+            />
+
+        <TextView
+            android:id="@+id/show_details_rating"
+            android:layout_width="@dimen/show_details_rating_width"
+            android:layout_height="@dimen/show_details_rating_height"
+            android:layout_alignBottom="@+id/show_details_screenshot"
+            android:layout_marginBottom="@dimen/default_spacing_large"
+            android:layout_marginLeft="@dimen/default_spacing_veryLarge"
+            style="@style/AppTheme.ShowDetails.Header.Rating"/>
+
+    </RelativeLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/series_view_pager"
-        android:layout_below="@id/series_view_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.v4.view.PagerTabStrip
             android:id="@+id/pager_tab"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="@style/AppTheme.ShowDetails.Content.Header"/>
     </android.support.v4.view.ViewPager>
 
 </LinearLayout>

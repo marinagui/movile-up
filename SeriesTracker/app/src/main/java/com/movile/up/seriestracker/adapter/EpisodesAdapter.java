@@ -21,7 +21,7 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
     private List<Episode> episodes;
     private SeasonDetailsClickEpisode mListener;
 
-    public EpisodesAdapter(Context context, SeasonDetailsClickEpisode clickListener) { //
+    public EpisodesAdapter(Context context, SeasonDetailsClickEpisode clickListener) {
         super(context,R.layout.season_details_episode);
         mListener = clickListener;
     }

@@ -19,4 +19,9 @@ public class ShowInfoFragment extends android.support.v4.app.Fragment {
         view = inflater.inflate(R.layout.show_info_fragment, container, false);
         return view;
     }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
 }

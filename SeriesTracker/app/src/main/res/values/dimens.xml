@@ -2,6 +2,7 @@
     <dimen name="default_spacing_small">4dp</dimen>
     <dimen name="default_spacing_medium">8dp</dimen>
     <dimen name="default_spacing_large">16dp</dimen>
+    <dimen name="default_spacing_veryLarge">32dp</dimen>
 
     <dimen name="default_textSize_verySmall">12sp</dimen>
     <dimen name="default_textSize_small">14sp</dimen>
@@ -35,6 +36,11 @@
     <dimen name="base_loading_progress_size">48dp</dimen>
 
     <!-- Show details -->
+    <dimen name="show_details_rating_height">48dp</dimen>
+    <dimen name="show_details_rating_width">56dp</dimen>
+    <dimen name="show_details_margin_bottom_year">7dp</dimen>
+    <dimen name="show_details_width_year">88dp</dimen>
+
     <dimen name="show_details_season_thumbnail_height">176dp</dimen>
     <dimen name="show_details_season_thumbnail_width">88dp</dimen>
 

@@ -36,6 +36,8 @@
         android:layout_width="@dimen/season_details_rating_size"
         android:layout_height="@dimen/season_details_rating_size"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/default_spacing_large"
+        android:layout_marginTop="@dimen/season_details_rating_marginTop"
         style="@style/AppTheme.SeasonDetails.Header.Rating"/>
 
 

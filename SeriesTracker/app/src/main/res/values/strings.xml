@@ -21,4 +21,6 @@
     <string name="serie_details_info">INFO</string>
     <string name="serie_details_seasons">SEASONS</string>
 
+    <string name="show_details">DETAILS</string>
+
 </resources>

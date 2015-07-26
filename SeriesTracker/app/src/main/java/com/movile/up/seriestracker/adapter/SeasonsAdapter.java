@@ -36,8 +36,15 @@ public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.ViewHold
     }
 
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.titleView().setText("Season " + seasons.get(position).number());
-        holder.episodesView().setText(seasons.get(position).episodeCount() + " episodes");
+        if (seasons.get(position).number() == 0)
+            holder.titleView().setText("Specials");
+        else
+            holder.titleView().setText("Season " + seasons.get(position).number());
+
+        if (seasons.get(position).episodeCount() != 1)
+            holder.episodesView().setText(seasons.get(position).episodeCount() + " episodes");
+        else
+            holder.episodesView().setText(seasons.get(position).episodeCount() + " episode");
 
         Glide
                 .with(mContext)

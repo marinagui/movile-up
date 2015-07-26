@@ -21,17 +21,16 @@ public class ShowUpdateReceiver extends BroadcastReceiver {
 
     private static final String TAG = ShowUpdateReceiver.class.getSimpleName();
     public static final String EXTRA_UPDATE = "extra_update";
-    private ShowUpdate update;
 
     public void onReceive(Context context, Intent intent) {
 
-        update = (ShowUpdate)intent.getExtras().get(EXTRA_UPDATE);
+        ShowUpdate update = (ShowUpdate) intent.getExtras().get(EXTRA_UPDATE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(update.title())
                 .setContentText(update.message())
-                .setContentIntent(this.getPendingIntent(context))
+                .setContentIntent(this.getPendingIntent(context,update))
                 .setAutoCancel(true)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(update.message()));
 
@@ -48,7 +47,7 @@ public class ShowUpdateReceiver extends BroadcastReceiver {
 
 
 
-    private PendingIntent getPendingIntent (Context mContext) {
+    private PendingIntent getPendingIntent (Context mContext, ShowUpdate update) {
         Intent intent = new Intent(mContext, ShowDetailsActivity.class);
         intent.putExtra(ShowDetailsActivity.EXTRA_SHOW, update.show());
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
