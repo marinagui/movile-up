@@ -33,4 +33,7 @@
     <color name="card_season_background">#F0F0F0</color>
     <color name="show_season_episodes_textColor">#A2A2A2</color>
 
+    <color name="show_details_favorite_on">@color/default_color_second</color>
+    <color name="show_details_favorite_off">@color/default_textColor_third</color>
+
 </resources>

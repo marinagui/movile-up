@@ -170,6 +170,12 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="AppTheme.ShowDetails.Favorite">
+        <item name="android:gravity">right</item>
+        <item name="android:layout_marginLeft">287.8dp</item>
+
+    </style>
+
     <style name="AppTheme.ShowDetails.Content"/>
 
     <style name="AppTheme.ShowDetails.Content.Header">

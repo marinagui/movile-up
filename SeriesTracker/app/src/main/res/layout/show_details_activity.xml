@@ -29,6 +29,14 @@
             android:text="2015"
             />
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/show_details_favorite"
+            android:layout_height="56dp"
+            android:layout_width="56dp"
+            android:layout_alignBottom="@id/show_details_rating"
+            style="@style/AppTheme.ShowDetails.Favorite" />
+
+
         <TextView
             android:id="@+id/show_details_rating"
             android:layout_width="@dimen/show_details_rating_width"
