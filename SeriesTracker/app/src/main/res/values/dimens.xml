@@ -50,4 +50,7 @@
     <dimen name="grid_item_height">170dp</dimen>
     <dimen name="grid_padding">@dimen/default_spacing_small</dimen>
 
+    <!-- Base Navigation Drawer -->
+    <dimen name="base_navigation_drawer_content_width">300dp</dimen>
+
 </resources>

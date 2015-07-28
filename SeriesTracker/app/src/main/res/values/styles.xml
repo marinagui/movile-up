@@ -133,11 +133,20 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:minHeight">@dimen/base_navigation_toolbar_minHeight</item>
         <item name="android:background">@color/base_navigation_toolbar_background</item>
-        <item name="android:textColorPrimary">@color/default_textColor_first</item>
+        <item name="android:textColor">@color/default_textColor_first</item>
     </style>
 
     <style name="AppTheme.Base.Navigation.Toolbar.Transparent">
         <item name="android:background">@color/base_navigation_toolbar_transparent_background</item>
+    </style>
+
+    <style name="AppTheme.Base.Navigation.Drawer"></style>
+
+    <style name="AppTheme.Base.Navigation.Drawer.Content">
+        <item name="android:layout_width">@dimen/base_navigation_drawer_content_width</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:background">@color/base_navigation_drawer_content_background</item>
     </style>
 
     <!-- Base Loading -->
@@ -258,4 +267,39 @@
     <style name="AppTheme.Grid.Item">
         <item name="android:scaleType">centerCrop</item>
     </style>
+
+    <style name="AppTheme.Favorites"/>
+
+    <style name="AppTheme.Favorites.Image">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="AppTheme.Favorites.Title">
+        <item name="android:gravity">left</item>
+        <item name="android:padding">@dimen/default_spacing_large</item>
+        <item name="android:textColor">@color/default_textColor_first</item>
+        <item name="android:textSize">@dimen/default_textSize_medium</item>
+        <item name="android:text">@string/favorite_title</item>
+    </style>
+
+    <style name="AppTheme.Favorites.List">
+        <item name="android:background">@color/default_background_second</item>
+    </style>
+
+
+    <style name="AppTheme.Favorites.List.Icon">
+        <item name="android:src">@drawable/favorite_item_icon_heart</item>
+    </style>
+
+    <style name="AppTheme.Favorites.List.ShowTitle">
+        <item name="android:gravity">left</item>
+        <item name="android:padding">@dimen/default_spacing_medium</item>
+        <item name="android:textColor">@color/default_textColor_fifth</item>
+        <item name="android:textSize">@dimen/default_textSize_medium</item>
+        <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
+        <item name="android:layout_toRightOf">@id/season_details_number</item>
+        <item name="android:layout_alignTop">@+id/season_details_number</item>
+    </style>
+
+
 </resources>

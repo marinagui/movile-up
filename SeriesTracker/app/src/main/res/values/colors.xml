@@ -36,4 +36,7 @@
     <color name="show_details_favorite_on">@color/default_color_second</color>
     <color name="show_details_favorite_off">@color/default_textColor_third</color>
 
+    <!-- Base Navigation Drawer -->
+    <color name="base_navigation_drawer_content_background">@color/default_background_second</color>
+
 </resources>

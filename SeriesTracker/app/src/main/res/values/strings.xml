@@ -23,4 +23,10 @@
 
     <string name="show_details">DETAILS</string>
 
+    <!-- Base Navigation -->
+    <string name="base_navigation_drawer_open">Open</string>
+    <string name="base_navigation_drawer_close">Close</string>
+
+    <string name="favorite_title">Favorited Shows</string>
+    <string name="favorite_empty">No show found</string>
 </resources>

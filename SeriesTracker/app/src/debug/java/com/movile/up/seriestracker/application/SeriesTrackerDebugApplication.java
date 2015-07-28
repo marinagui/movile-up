@@ -6,6 +6,7 @@ package com.movile.up.seriestracker.application;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 public class SeriesTrackerDebugApplication extends Application {
 
@@ -18,6 +19,8 @@ public class SeriesTrackerDebugApplication extends Application {
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                         .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                         .build());
+
+        FlowManager.init(this);
     }
 
 }

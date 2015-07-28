@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.model.Show;
+import com.movile.up.seriestracker.view.ShowDetailsInfoView;
 
 /**
  * Created by android on 7/21/15.
  */
-public class ShowInfoFragment extends android.support.v4.app.Fragment {
+public class ShowInfoFragment extends android.support.v4.app.Fragment implements ShowDetailsInfoView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -23,5 +25,10 @@ public class ShowInfoFragment extends android.support.v4.app.Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void displayInfo(Show show) {
+
     }
 }
