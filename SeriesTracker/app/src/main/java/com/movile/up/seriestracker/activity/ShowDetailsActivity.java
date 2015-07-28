@@ -11,8 +11,7 @@ import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activity.base.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.adapter.ShowViewPagerAdapter;
-import com.movile.up.seriestracker.database.dao.FavoriteDAO;
-import com.movile.up.seriestracker.loader.FavoriteLoaderCallback;
+import com.movile.up.seriestracker.database.db_flow.dao.FavoriteDAO;
 import com.movile.up.seriestracker.model.Favorite;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.model.Show;
@@ -29,9 +28,10 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     public static final String EXTRA_SHOW = "show_details_extra_show";
 
     private ShowViewPagerAdapter adapterViewPager;
+    private FloatingActionButton favoriteView;
     ShowDetailsPresenter mPresenter;
     private String mShow, mTitle;
-    FloatingActionButton favoriteView;
+    private boolean favorited = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,30 +78,34 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         hideLoading();
     }
 
+    private void getIntentExtra(){
+        mShow = getIntent().getExtras().getString(EXTRA_SHOW);
+    }
+
     @Override
     public void displayFavorite(Favorite favorite) {
         if (favorite != null) {
             favoriteView.setImageResource(R.drawable.show_details_favorite_on);
             favoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.show_details_favorite_on));
+            favorited = true;
         } else {
             favoriteView.setImageResource(R.drawable.show_details_favorite_off);
             favoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.show_details_favorite_off));
+            favorited = false;
         }
-    }
-
-    private void getIntentExtra(){
-        mShow = getIntent().getExtras().getString(EXTRA_SHOW);
     }
 
     private void onFavoriteClick() {
-
-        FavoriteDAO favDao = new FavoriteDAO(this);
-
-        if (favDao.query(mShow) != null) {
-            favDao.delete(mShow);
+        if (favorited == false) {
+            favoriteView.setImageResource(R.drawable.show_details_favorite_on);
+            favoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.show_details_favorite_on));
+            mPresenter.addFavorite(new Favorite(mShow,mTitle));
+            favorited = true;
         } else {
-            favDao.save(new Favorite(mShow,mTitle));
+            favoriteView.setImageResource(R.drawable.show_details_favorite_off);
+            favoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.show_details_favorite_off));
+            mPresenter.deleteFavorite(mShow);
+            favorited = false;
         }
-        mPresenter.loadFavorite(mShow);
     }
 }

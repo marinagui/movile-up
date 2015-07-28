@@ -1,23 +1,19 @@
-package com.movile.up.seriestracker.database.dao;
+package com.movile.up.seriestracker.database.db_flow.dao;
 
 import android.content.Context;
 import android.database.Cursor;
 
-import com.movile.up.seriestracker.database.db_flow.FavoriteEntity;
-import com.movile.up.seriestracker.database.db_flow.FavoriteEntity$Table;
+import com.movile.up.seriestracker.database.db_flow.entity.FavoriteEntity;
+import com.movile.up.seriestracker.database.db_flow.entity.FavoriteEntity$Table;
 import com.movile.up.seriestracker.model.Favorite;
 import com.raizlabs.android.dbflow.sql.builder.Condition;
+import com.raizlabs.android.dbflow.sql.language.Delete;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
 /**
  * Created by android on 7/27/15.
  */
-public class FavoriteDAODBFlow {
-    private Context mContext;
-
-    public FavoriteDAODBFlow(Context context) {
-        mContext = context;
-    }
+public class FavoriteDAO {
 
     public void save(Favorite favorite) {
         FavoriteEntity entity = new FavoriteEntity(favorite.slug(), favorite.title());
@@ -28,13 +24,23 @@ public class FavoriteDAODBFlow {
         return new Select().from(FavoriteEntity.class).queryCursorList().getCursor();
     }
 
-    /*
-    public FavoriteEntity query(String slug) {
+    public Favorite query(String slug) {
         FavoriteEntity entity = new Select()
                 .from(FavoriteEntity.class)
                 .where(Condition.column(FavoriteEntity$Table.SLUG).eq(slug))
                 .querySingle();
 
-        return entity;
-    }*/
+        if(entity != null) {
+            return new Favorite(entity.slug(), entity.title());
+        }else{
+            return null;
+        }
+    }
+
+    public void delete(String slug) {
+        new Delete()
+                .from(FavoriteEntity.class)
+                .where(Condition.column(FavoriteEntity$Table.SLUG).eq(slug))
+                .queryClose();
+    }
 }

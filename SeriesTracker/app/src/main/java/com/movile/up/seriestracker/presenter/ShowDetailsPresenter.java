@@ -3,6 +3,8 @@ package com.movile.up.seriestracker.presenter;
 import android.content.Context;
 
 import com.movile.up.seriestracker.activity.ShowDetailsActivity;
+import com.movile.up.seriestracker.async_task.FavoriteAddAsyncTask;
+import com.movile.up.seriestracker.async_task.FavoriteRemoveAsyncTask;
 import com.movile.up.seriestracker.listener.OnFavoriteListener;
 import com.movile.up.seriestracker.listener.ShowDetailsCallback;
 import com.movile.up.seriestracker.loader.FavoriteLoaderCallback;
@@ -40,5 +42,13 @@ public class ShowDetailsPresenter implements ShowDetailsCallback {
                 mView.displayFavorite(favorite);
             }
         }, show)).forceLoad();
+    }
+
+    public void addFavorite(Favorite favorite){
+        new FavoriteAddAsyncTask().execute(favorite);
+    }
+
+    public void deleteFavorite(String show){
+        new FavoriteRemoveAsyncTask().execute(show);
     }
 }

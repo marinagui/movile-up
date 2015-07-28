@@ -1,7 +1,8 @@
-package com.movile.up.seriestracker.database.db_flow;
+package com.movile.up.seriestracker.database.db_flow.entity;
 
 import android.provider.BaseColumns;
 
+import com.movile.up.seriestracker.database.db_flow.SeriesTrackerDatabase;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
@@ -25,5 +26,16 @@ public class FavoriteEntity extends BaseModel {
     public FavoriteEntity(String slug, String title) {
         this.slug = slug;
         this.title = title;
+    }
+
+    public FavoriteEntity() {
+    }
+
+    public String slug() {
+        return slug;
+    }
+
+    public String title() {
+        return title;
     }
 }

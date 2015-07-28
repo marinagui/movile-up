@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.database.dao;
+package com.movile.up.seriestracker.database.manual.dao;
 
 import android.content.Context;
 import android.database.Cursor;
