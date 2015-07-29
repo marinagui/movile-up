@@ -52,7 +52,7 @@ public class FavoritesFragment extends Fragment implements FavoritesView, OnClic
         else
             tv.setImageResource(R.drawable.favorites_header_tv_happy);
 
-        mAdapter.swapCursor(favorites);
+        mAdapter.setCursor(favorites);
     }
 
     @Override

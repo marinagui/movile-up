@@ -12,7 +12,9 @@ import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.fragments.FavoritesFragment;
 
 public class BaseNavigationDrawerActivity extends BaseLoadingActivity {
- 
+
+    public static final String DRAWER_FRAGMENT_TAG = "favorites";
+
     private ViewGroup mRoot;
     protected DrawerLayout mDrawerLayout;
     protected ActionBarDrawerToggle mDrawerToggle;
@@ -34,9 +36,11 @@ public class BaseNavigationDrawerActivity extends BaseLoadingActivity {
         configureNavigationDrawer();
         configureNavigationDrawerContent();
     }
- 
+
     private void configureNavigationDrawerContent() {
-        getSupportFragmentManager().beginTransaction().add(R.id.base_navigation_drawer_content, new FavoritesFragment(), "favorites").commit();
+        if (getSupportFragmentManager().findFragmentByTag(DRAWER_FRAGMENT_TAG) == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.base_navigation_drawer_content, new FavoritesFragment(), DRAWER_FRAGMENT_TAG).commit();
+        }
     }
  
     private void configureNavigationDrawer() {

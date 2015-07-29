@@ -60,6 +60,11 @@ public class FavoritesAdapter extends CursorAdapter {
         public TextView title() { return titleView; }
         public View root() { return root; }
     }
+
+    public void setCursor(Cursor cursor) {
+        changeCursor(cursor);
+    }
+
 }
 
 

@@ -1,5 +1,9 @@
 package com.movile.up.seriestracker.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
@@ -96,16 +100,56 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     }
 
     private void onFavoriteClick() {
-        if (favorited == false) {
-            favoriteView.setImageResource(R.drawable.show_details_favorite_on);
-            favoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.show_details_favorite_on));
-            mPresenter.addFavorite(new Favorite(mShow,mTitle));
-            favorited = true;
-        } else {
-            favoriteView.setImageResource(R.drawable.show_details_favorite_off);
-            favoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.show_details_favorite_off));
-            mPresenter.deleteFavorite(mShow);
-            favorited = false;
-        }
+
+        ObjectAnimator startX = ObjectAnimator.ofFloat(favoriteView, "scaleX", 1, 0);
+        startX.setDuration(200);
+        ObjectAnimator startY = ObjectAnimator.ofFloat(favoriteView, "scaleY", 1, 0);
+        startY.setDuration(200);
+
+        AnimatorSet setFirst = new AnimatorSet();
+        setFirst.playTogether(startX, startY);
+        setFirst.setDuration(200);
+        setFirst.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (favorited == false) {
+                    favoriteView.setImageResource(R.drawable.show_details_favorite_on);
+                    favoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.show_details_favorite_on));
+                    mPresenter.addFavorite(new Favorite(mShow, mTitle));
+                    favorited = true;
+                } else {
+                    favoriteView.setImageResource(R.drawable.show_details_favorite_off);
+                    favoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.show_details_favorite_off));
+                    mPresenter.deleteFavorite(mShow);
+                    favorited = false;
+                }
+
+                ObjectAnimator finishX = ObjectAnimator.ofFloat(favoriteView, "scaleX", 0, 1);
+                finishX.setDuration(200);
+                ObjectAnimator finishY = ObjectAnimator.ofFloat(favoriteView, "scaleY", 0, 1);
+                finishY.setDuration(200);
+
+                AnimatorSet setLast = new AnimatorSet();
+                setLast.playTogether(finishX, finishY);
+                setLast.setDuration(200);
+                setLast.start();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        setFirst.start();
+
     }
 }

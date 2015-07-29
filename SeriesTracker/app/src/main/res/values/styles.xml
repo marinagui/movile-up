@@ -2,8 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="windowActionBar">false</item>
+
     </style>
 
     <!-- ....................Episode Details.................... -->
@@ -124,7 +123,7 @@
     </style>
 
     <!-- Base Navigation -->
-    <style name="AppTheme.Base"></style>
+    <style name="AppTheme.Base"/>
 
     <style name="AppTheme.Base.Navigation"></style>
 
@@ -133,14 +132,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:minHeight">@dimen/base_navigation_toolbar_minHeight</item>
         <item name="android:background">@color/base_navigation_toolbar_background</item>
-        <item name="android:textColor">@color/default_textColor_first</item>
     </style>
 
     <style name="AppTheme.Base.Navigation.Toolbar.Transparent">
         <item name="android:background">@color/base_navigation_toolbar_transparent_background</item>
     </style>
 
-    <style name="AppTheme.Base.Navigation.Drawer"></style>
+    <style name="AppTheme.Base.Navigation.Drawer"/>
 
     <style name="AppTheme.Base.Navigation.Drawer.Content">
         <item name="android:layout_width">@dimen/base_navigation_drawer_content_width</item>
@@ -150,7 +148,7 @@
     </style>
 
     <!-- Base Loading -->
-    <style name="AppTheme.Base.Loading"></style>
+    <style name="AppTheme.Base.Loading"/>
 
     <style name="AppTheme.Base.Loading.Container">
         <item name="android:background">@color/base_loading_container_background</item>
@@ -181,8 +179,8 @@
 
     <style name="AppTheme.ShowDetails.Favorite">
         <item name="android:gravity">right</item>
-        <item name="android:layout_marginLeft">287.8dp</item>
-
+        <item name="android:layout_marginRight">@dimen/default_spacing_large</item>
+        <item name="android:layout_alignParentRight">true</item>
     </style>
 
     <style name="AppTheme.ShowDetails.Content"/>
