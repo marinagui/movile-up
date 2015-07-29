@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:id="@+id/season_details_title"
+        android:id="@+id/favorited_show_title"
         style="@style/AppTheme.Favorites.List.ShowTitle"/>
 
 </LinearLayout>

@@ -9,15 +9,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.database.db_flow.entity.FavoriteEntity;
 import com.movile.up.seriestracker.database.db_flow.entity.FavoriteEntity$Adapter;
+import com.movile.up.seriestracker.listener.OnClickFavoriteListener;
+import com.movile.up.seriestracker.model.Favorite;
 
 /**
  * Created by android on 7/28/15.
  */
 public class FavoritesAdapter extends CursorAdapter {
 
-    public FavoritesAdapter(Context context, Cursor cursor, int flags) {
-        super(context,cursor,flags);
+    private OnClickFavoriteListener mListener;
+
+    public FavoritesAdapter(Context context, OnClickFavoriteListener clickListener) {
+        super(context,null,0);
+        mListener = clickListener;
     }
 
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -30,17 +36,25 @@ public class FavoritesAdapter extends CursorAdapter {
     }
 
     public void bindView(View view, Context context, Cursor cursor) {
-        //FavoriteEntity$Adapter adapter=new FavoriteEntity$Adapter();
-        //adapter.loadFromCursor(cursor,);
+        FavoriteEntity$Adapter adapter=new FavoriteEntity$Adapter();
+        final FavoriteEntity entity = new FavoriteEntity();
+        adapter.loadFromCursor(cursor, entity);
 
-        ((ViewHolder)view.getTag()).title().setText("just for test");
+        ViewHolder holder = (ViewHolder)view.getTag();
+        holder.title().setText(entity.title());
+        holder.root().setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mListener.onFavoriteClick(new Favorite(entity.slug(), entity.title()));
+            }
+        });
     }
 
     public static class ViewHolder {
         private TextView titleView;
         private View root;
         public ViewHolder(View root) {
-            titleView = (TextView)root.findViewById(R.id.favorites_title);
+            titleView = (TextView)root.findViewById(R.id.favorited_show_title);
             this.root = root;
         }
         public TextView title() { return titleView; }

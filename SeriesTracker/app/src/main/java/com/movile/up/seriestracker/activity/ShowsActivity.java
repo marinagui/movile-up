@@ -33,7 +33,6 @@ public class ShowsActivity extends BaseNavigationDrawerActivity implements Shows
 
         configureNavigation();
         configureShowsGrid();
-        configureFavoritesList();
 
         mPresenter = new ShowsPresenter(this,this);
         mPresenter.loadShows();
@@ -43,17 +42,6 @@ public class ShowsActivity extends BaseNavigationDrawerActivity implements Shows
         GridView gridview = (GridView) findViewById(R.id.shows_grid_view);
         mAdapter = new ShowsGridAdapter(this,this);
         gridview.setAdapter(mAdapter);
-    }
-
-    private void configureFavoritesList () {
-        ListView favoritesList = (ListView) findViewById(R.id.favorites_list_drawer);
-        View empty = LayoutInflater.from(this)
-                .inflate(R.layout.favorites_list_content_empty, favoritesList, false);
-
-        //FavoritesAdapter adapter = new FavoritesAdapter(this,this);
-
-        favoritesList.setEmptyView(empty);
-        //favoritesList.setAdapter(adapter);
     }
 
     @Override
