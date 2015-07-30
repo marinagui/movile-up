@@ -195,7 +195,6 @@
     <style name="AppTheme.SeasonItem"/>
 
     <style name="AppTheme.SeasonItem.Container">
-        <!--<item name="android:background">@color/card_season_background</item>-->
     </style>
 
     <style name="AppTheme.SeasonItem.Thumbnail">
@@ -222,6 +221,8 @@
     <style name="AppTheme.InfoItem.CardView" parent="CardView">
         <item name="cardCornerRadius">@dimen/default_spacing_small</item>
         <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
+        <item name="android:layout_marginRight">@dimen/default_spacing_large</item>
     </style>
 
     <style name="AppTheme.InfoItem.Summary"/>
@@ -240,9 +241,8 @@
     </style>
     <style name="AppTheme.InfoItem.Summary.Text">
         <item name="android:gravity">left</item>
-        <item name="android:padding">@dimen/default_spacing_large</item>
+        <item name="android:padding">@dimen/default_spacing_small</item>
         <item name="android:textColor">@color/default_textColor_fourth</item>
-        <item name="android:text">@string/episode_details_text</item>
     </style>
 
     <style name="AppTheme.InfoItem.Details"/>
@@ -251,6 +251,25 @@
     <style name="AppTheme.InfoItem.Details.Separator" parent="AppTheme.InfoItem.Summary.Separator"/>
     <style name="AppTheme.InfoItem.Details.Body" parent="AppTheme.InfoItem.Summary.Text"/>
 
+    <style name="AppTheme.InfoItem.Genres">
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/show_genres</item>
+        <item name="android:textColor">@color/default_textColor_first</item>
+        <item name="android:textSize">@dimen/default_textSize_verySmall</item>
+        <item name="android:background">@drawable/show_information_genre</item>
+    </style>
+
+    <!-- Show details - info - related shows -->
+    <style name="AppTheme.RelatedShow"/>
+
+    <style name="AppTheme.RelatedShow.Thumbnail" parent="AppTheme.SeasonItem.Thumbnail"/>
+    <style name="AppTheme.RelatedShow.Title" parent="AppTheme.SeasonItem.Title"/>
+
+    <style name="AppTheme.RelatedShow.Year" parent="AppTheme.SeasonItem.Episodes">
+        <item name="android:text">2015</item>
+    </style>
+
+    <!-- Shows grid -->
     <style name="AppTheme.Grid">
         <item name="android:numColumns">auto_fit</item>
         <item name="android:verticalSpacing">@dimen/grid_spacing</item>

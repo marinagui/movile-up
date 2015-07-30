@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+    <ImageView
+        android:id="@+id/shows_grid_item_poster"
+        android:layout_width="@dimen/grid_item_width"
+        android:layout_height="@dimen/grid_item_height"
+        style="@style/AppTheme.Grid.Item"/>
+</LinearLayout>

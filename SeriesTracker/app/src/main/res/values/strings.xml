@@ -18,10 +18,16 @@
 
     <string name="season_details_title">Episodes</string>
 
-    <string name="serie_details_info">INFO</string>
-    <string name="serie_details_seasons">SEASONS</string>
+    <!-- labels tab strip -->
+    <string name="show_details_info">INFO</string>
+    <string name="show_details_seasons">SEASONS</string>
+    <string name="show_details_related">RELATED SHOWS</string>
 
     <string name="show_details">DETAILS</string>
+
+    <string name="show_genres">GENRES</string>
+
+    <string name="related_shows">RELATED SHOWS</string>
 
     <!-- Base Navigation -->
     <string name="base_navigation_drawer_open">Open</string>

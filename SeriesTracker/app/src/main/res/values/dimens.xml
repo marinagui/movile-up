@@ -28,6 +28,8 @@
     <dimen name="season_details_rating_size">48dp</dimen>
     <dimen name="season_details_rating_marginTop">264dp</dimen>
 
+    <dimen name="season_item_container_cornerRadius">4dp</dimen>
+
     <!-- Base Navigation Toolbar -->
     <dimen name="base_navigation_toolbar_height">56dp</dimen>
     <dimen name="base_navigation_toolbar_minHeight">@dimen/base_navigation_toolbar_height</dimen>
@@ -43,6 +45,9 @@
 
     <dimen name="show_details_season_thumbnail_height">176dp</dimen>
     <dimen name="show_details_season_thumbnail_width">88dp</dimen>
+
+    <dimen name="show_details_genre_height">32dp</dimen>
+    <dimen name="show_details_genre_width">80dp</dimen>
 
     <!-- Shows grid -->
     <dimen name="grid_spacing">@dimen/default_spacing_small</dimen>

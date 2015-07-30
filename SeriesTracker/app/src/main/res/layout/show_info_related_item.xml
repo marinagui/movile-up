@@ -23,23 +23,22 @@
                 android:layout_width="wrap_content">
 
                 <ImageView
-                    android:id="@+id/show_details_season_thumbnail"
+                    android:id="@+id/show_info_related_thumbnail"
                     android:layout_width="@dimen/season_details_thumbnail_width"
                     android:layout_height="@dimen/season_details_thumbnail_height"
-                    style="@style/AppTheme.SeasonItem.Thumbnail"/>
+                    style="@style/AppTheme.RelatedShow.Thumbnail"/>
 
                 <TextView
-                    android:id="@+id/show_details_season_title"
+                    android:id="@+id/show_info_related_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/AppTheme.SeasonItem.Title"/>
+                    style="@style/AppTheme.RelatedShow.Title"/>
 
                 <TextView
-                    android:id="@+id/show_details_season_episodes"
+                    android:id="@+id/show_info_related_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    style="@style/AppTheme.SeasonItem.Episodes"/>
+                    style="@style/AppTheme.RelatedShow.Year"/>
             </LinearLayout>
 
         </com.movile.up.seriestracker.custom.RoundedFrameLayout>

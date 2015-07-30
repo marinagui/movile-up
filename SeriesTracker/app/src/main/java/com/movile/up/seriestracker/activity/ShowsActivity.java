@@ -2,14 +2,10 @@ package com.movile.up.seriestracker.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.GridView;
-import android.widget.ListView;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activity.base.BaseNavigationDrawerActivity;
-import com.movile.up.seriestracker.adapter.FavoritesAdapter;
 import com.movile.up.seriestracker.adapter.ShowsGridAdapter;
 import com.movile.up.seriestracker.listener.ShowsClickListener;
 import com.movile.up.seriestracker.model.Show;
